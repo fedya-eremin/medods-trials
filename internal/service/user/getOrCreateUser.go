@@ -3,7 +3,7 @@ package user
 import (
 	"context"
 
-	"example.com/m/internal/dto"
+	"github.com/fedya-eremin/medods-trials/internal/dto"
 	"github.com/google/uuid"
 )
 

@@ -4,7 +4,7 @@ import (
 	"context"
 	"encoding/base64"
 
-	"example.com/m/internal/dto"
+	"github.com/fedya-eremin/medods-trials/internal/dto"
 )
 
 func (s *JWTService) GetUserByRefreshToken(ctx context.Context, refreshToken string) (*dto.User, error) {

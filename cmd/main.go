@@ -17,8 +17,8 @@ import (
 	"net/http"
 	"os"
 
-	"example.com/m/internal/api"
-	"example.com/m/internal/config"
+	"github.com/fedya-eremin/medods-trials/internal/api"
+	"github.com/fedya-eremin/medods-trials/internal/config"
 	"github.com/jackc/pgx/v5/pgxpool"
 )
 

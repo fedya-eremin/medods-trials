@@ -5,11 +5,11 @@ import (
 	"net/http"
 	"os"
 
-	_ "example.com/m/docs"
-	"example.com/m/internal/config"
-	"example.com/m/internal/middleware"
-	jwtService "example.com/m/internal/service/jwt"
-	userService "example.com/m/internal/service/user"
+	_ "github.com/fedya-eremin/medods-trials/docs"
+	"github.com/fedya-eremin/medods-trials/internal/config"
+	"github.com/fedya-eremin/medods-trials/internal/middleware"
+	jwtService "github.com/fedya-eremin/medods-trials/internal/service/jwt"
+	userService "github.com/fedya-eremin/medods-trials/internal/service/user"
 	"github.com/jackc/pgx/v5/pgxpool"
 	httpSwagger "github.com/swaggo/http-swagger/v2"
 )

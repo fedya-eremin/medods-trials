@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"example.com/m/internal/contextkeys"
+	"github.com/fedya-eremin/medods-trials/internal/contextkeys"
 	"github.com/golang-jwt/jwt/v5"
 	"github.com/google/uuid"
 )

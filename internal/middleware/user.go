@@ -4,8 +4,8 @@ import (
 	"net/http"
 	"strings"
 
-	"example.com/m/internal/contextkeys"
-	"example.com/m/internal/service/jwt"
+	"github.com/fedya-eremin/medods-trials/internal/contextkeys"
+	"github.com/fedya-eremin/medods-trials/internal/service/jwt"
 )
 
 func JWTMiddleware(j *jwt.JWTService) func(http.HandlerFunc) http.HandlerFunc {

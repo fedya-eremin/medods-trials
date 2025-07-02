@@ -6,8 +6,8 @@ import (
 	"net"
 	"net/http"
 
-	"example.com/m/internal/contextkeys"
-	"example.com/m/internal/dto"
+	"github.com/fedya-eremin/medods-trials/internal/contextkeys"
+	"github.com/fedya-eremin/medods-trials/internal/dto"
 )
 
 // Refresh godoc

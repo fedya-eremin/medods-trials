@@ -6,7 +6,7 @@ import (
 	"encoding/base64"
 	"time"
 
-	"example.com/m/internal/dto"
+	"github.com/fedya-eremin/medods-trials/internal/dto"
 	"github.com/golang-jwt/jwt/v5"
 	"github.com/google/uuid"
 	"golang.org/x/crypto/bcrypt"

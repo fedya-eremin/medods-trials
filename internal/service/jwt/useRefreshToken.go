@@ -8,8 +8,8 @@ import (
 	"net/http"
 	"time"
 
-	"example.com/m/internal/contextkeys"
-	"example.com/m/internal/dto"
+	"github.com/fedya-eremin/medods-trials/internal/contextkeys"
+	"github.com/fedya-eremin/medods-trials/internal/dto"
 )
 
 func (s *JWTService) UseRefreshToken(ctx context.Context, refreshToken string, userAgent string, ip string) error {

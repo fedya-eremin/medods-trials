@@ -1,4 +1,4 @@
-module example.com/m
+module github.com/fedya-eremin/medods-trials
 
 go 1.24.4
 

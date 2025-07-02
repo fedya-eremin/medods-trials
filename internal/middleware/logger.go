@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"time"
 
-	"example.com/m/internal/contextkeys"
+	"github.com/fedya-eremin/medods-trials/internal/contextkeys"
 )
 
 type responseWriterWithLog struct {
