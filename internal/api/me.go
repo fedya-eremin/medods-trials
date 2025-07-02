@@ -16,6 +16,7 @@ import (
 //	@Tags			api
 //	@Security		Bearer
 //	@Success		200	{object}	dto.User
+//	@Failure		401	{string}	string
 //	@Failure		500	{string}	string
 //	@Router			/api/me [get]
 func (s *State) MeHandler(w http.ResponseWriter, r *http.Request) {
@@ -29,7 +30,19 @@ func (s *State) MeHandler(w http.ResponseWriter, r *http.Request) {
 		logger.Error("error", "err", err)
 		return
 	}
-	user, err := s.AuthService.GetUser(ctx, userID)
+
+	jti, err := uuid.Parse(jwtClaims.ID)
+	if err != nil {
+		http.Error(w, "Internal server error", http.StatusInternalServerError)
+		logger.Error("error", "err", err)
+		return
+	}
+	user, err := s.AuthService.GetUserByIDAndJTI(ctx, userID, jti)
+	if err != nil {
+		http.Error(w, "Unauthorized", http.StatusUnauthorized)
+		logger.Error("error", "err", err)
+		return
+	}
 	reponseBody, err := json.Marshal(user)
 	if err != nil {
 		http.Error(w, "Internal server error", http.StatusInternalServerError)

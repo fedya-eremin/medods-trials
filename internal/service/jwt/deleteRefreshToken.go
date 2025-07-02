@@ -13,12 +13,14 @@ func (s *JWTService) DeleteRefreshTokenByID(ctx context.Context, id uuid.UUID) e
 		return err
 	}
 	defer conn.Release()
-	_, err = conn.Exec(
+	var jti string
+	err = conn.QueryRow(
 		ctx,
 		`delete from auth.refresh_token
-		where id = $1`,
+		where id = $1
+		returning id`,
 		id,
-	)
+	).Scan(&jti)
 	return err
 }
 

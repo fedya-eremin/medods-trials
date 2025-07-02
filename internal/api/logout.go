@@ -15,6 +15,7 @@ import (
 //	@Tags			api
 //	@Security		Bearer
 //	@Success		204
+//	@Failure		401	{string}	string
 //	@Failure		500	{string}	string
 //	@Router			/api/logout [post]
 func (s *State) LogoutHandler(w http.ResponseWriter, r *http.Request) {
@@ -30,7 +31,7 @@ func (s *State) LogoutHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	err = s.JWTService.DeleteRefreshTokenByID(ctx, jti)
 	if err != nil {
-		http.Error(w, "Internal server error", http.StatusInternalServerError)
+		http.Error(w, "Unauthorized", http.StatusUnauthorized)
 		logger.Error("error", "err", err)
 		return
 	}
