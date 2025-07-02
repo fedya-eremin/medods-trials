@@ -63,7 +63,7 @@ func (s *JWTService) UseRefreshToken(ctx context.Context, refreshToken string, u
 		return &dto.WrongUserAgent{UserAgent: newUserAgent}
 	}
 
-	if ip == newIP {
+	if ip != newIP {
 		webhookRequestBody, err := json.Marshal(dto.WebhookRequest{
 			UserID:       userID,
 			OldUserAgent: userAgent,
