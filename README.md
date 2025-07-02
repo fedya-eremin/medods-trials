@@ -1,4 +1,4 @@
-# MEDDOS TRIALS
+# MEDODS TRIALS
 ## Запуск
 Запуск происходит на localhost:8000
 ```bash
