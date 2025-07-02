@@ -1,0 +1,132 @@
+basePath: /
+definitions:
+  dto.RefreshRequest:
+    properties:
+      refresh_token:
+        type: string
+    type: object
+  dto.TokenPair:
+    properties:
+      access_token:
+        type: string
+      lifetime:
+        type: integer
+      refresh_token:
+        type: string
+    type: object
+  dto.User:
+    properties:
+      id:
+        type: string
+    type: object
+host: localhost:8000
+info:
+  contact: {}
+  description: For trials
+  title: AuthApi
+  version: "1.0"
+paths:
+  /api/login:
+    post:
+      consumes:
+      - application/json
+      description: exchange UUID for access and refresh token pair
+      parameters:
+      - description: user uuid
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/dto.User'
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/dto.TokenPair'
+        "422":
+          description: body is unprocessable
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Login handler
+      tags:
+      - api
+  /api/logout:
+    post:
+      description: logout via access token, i.e. remove refresh token entry from db
+      responses:
+        "204":
+          description: No Content
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - Bearer: []
+      summary: Logout handler
+      tags:
+      - api
+  /api/me:
+    get:
+      description: get user by his access token
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.User'
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - Bearer: []
+      summary: Me handler
+      tags:
+      - api
+  /api/refresh:
+    post:
+      consumes:
+      - application/json
+      description: exchange refresh token for access and refresh token pair. if ip
+        differs from initial, webhook request issued
+      parameters:
+      - description: request with refresh token
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/dto.RefreshRequest'
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/dto.TokenPair'
+        "403":
+          description: token is used, expired, or User-Agent is different
+          schema:
+            type: string
+        "409":
+          description: wrong format of refresh token
+          schema:
+            type: string
+        "422":
+          description: body is unprocessable
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Refresh handler
+      tags:
+      - api
+securityDefinitions:
+  Bearer:
+    description: Paste token with Bearer prefix, e.g. `Bearer <your-token>`
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"
