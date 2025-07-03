@@ -152,7 +152,7 @@ const docTemplate = `{
                         }
                     },
                     "403": {
-                        "description": "token is used, expired, or User-Agent is different",
+                        "description": "token is used, or User-Agent is different",
                         "schema": {
                             "type": "string"
                         }

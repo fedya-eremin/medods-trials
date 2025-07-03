@@ -1,13 +1,13 @@
-//	@title						AuthApi
-//	@version					1.0
-//	@description				For trials
-//	@host						localhost:8000
-//	@BasePath					/
-//	@securityDefinitions.apikey	Bearer
-//	@authorizationurl			http://localhost:8000/api/login
-//	@in							header
-//	@name						Authorization
-//	@description				Paste token with Bearer prefix, e.g. `Bearer <your-token>`
+// @title						AuthApi
+// @version					1.0
+// @description				For trials
+// @host						localhost:8000
+// @BasePath					/
+// @securityDefinitions.apikey	Bearer
+// @authorizationurl			http://localhost:8000/api/login
+// @in							header
+// @name						Authorization
+// @description				Paste token with Bearer prefix, e.g. `Bearer <your-token>`
 package main
 
 import (

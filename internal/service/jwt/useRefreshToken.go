@@ -51,10 +51,6 @@ func (s *JWTService) UseRefreshToken(ctx context.Context, refreshToken string, u
 		return &dto.TokenUsedError{Token: refreshToken}
 	}
 
-	if time.Now().After(expiresAt) {
-		return &dto.TokenExpiredError{Token: refreshToken}
-	}
-
 	if userAgent != newUserAgent {
 		err = s.DeleteRefreshToken(ctx, refreshToken)
 		if err != nil {

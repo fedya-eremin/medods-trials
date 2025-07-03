@@ -19,7 +19,7 @@ import (
 //	@Return			json
 //	@Param			user	body		dto.RefreshRequest	true	"request with refresh token"
 //	@Success		201		{object}	dto.TokenPair
-//	@Failure		403		{string}	string	"token is used, expired, or User-Agent is different"
+//	@Failure		403		{string}	string	"token is used, or User-Agent is different"
 //	@Failure		409		{string}	string	"wrong format of refresh token"
 //	@Failure		422		{string}	string	"body is unprocessable"
 //	@Failure		500		{string}	string
@@ -52,9 +52,6 @@ func (s *State) RefreshHandler(w http.ResponseWriter, r *http.Request) {
 	switch err.(type) {
 	case *dto.TokenUsedError:
 		http.Error(w, "Token has been already used", http.StatusForbidden)
-		return
-	case *dto.TokenExpiredError:
-		http.Error(w, "Token has been expired", http.StatusForbidden)
 		return
 	case *dto.WrongUserAgent:
 		http.Error(w, "Wrong User-Agent", http.StatusForbidden)
